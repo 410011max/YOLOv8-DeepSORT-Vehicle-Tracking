@@ -1,13 +1,5 @@
 ## Steps to run Code
 
-- Clone the repository
-```
-git clone https://github.com/410011max/YOLOv8-DeepSORT-Vehicle-Tracking.git
-```
-- Goto the cloned folder.
-```
-cd YOLOv8-DeepSORT-Vehicle-Tracking
-```
 - Install the dependecies
 ```
 pip install -e '.[dev]'
