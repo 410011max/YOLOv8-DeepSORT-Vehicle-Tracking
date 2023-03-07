@@ -48,7 +48,7 @@ plots: True # show plots during training
 
 # Prediction settings --------------------------------------------------------------------------------------------------
 source: null # source directory for images or videos
-show: False # show results if possible
+show: True # show results if possible
 save_txt: False # save results as .txt file
 save_conf: False # save results with confidence scores
 save_crop: False # save cropped images with results
