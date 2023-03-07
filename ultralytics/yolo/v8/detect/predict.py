@@ -309,9 +309,10 @@ class DetectionPredictor(BasePredictor):
 @hydra.main(version_base=None, config_path=str(DEFAULT_CONFIG.parent), config_name=DEFAULT_CONFIG.name)
 def predict(cfg):
     init_tracker()
-    cfg.model = cfg.model or "yolov8n.pt"
+    cfg.model = cfg.model or "yolov8m.pt"
     cfg.imgsz = check_imgsz(cfg.imgsz, min_dim=2)  # check image size
-    cfg.source = cfg.source if cfg.source is not None else ROOT / "assets"
+    cfg.source = cfg.source if cfg.source is not None else "demo"
+    cfg.project = "result"
     predictor = DetectionPredictor(cfg)
     predictor()
 
