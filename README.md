@@ -19,7 +19,7 @@ cd ultralytics/yolo/v8/detect
 - Put your video or image into `ultralytics\yolo\v8\detect\demo`
 - Run YOLOv8 Vehicle Tracking & Counting
 ```
-python predict.py model=yolov8x.pt imgsz=1280 conf=0.8 source=demo 
+python predict.py model=yolov8x.pt imgsz=1280 conf=0.8 source=demo/test.mp4
 ```
 
 ### Result
