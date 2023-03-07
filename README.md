@@ -21,26 +21,15 @@ cd YOLOv8-DeepSORT-Vehicle-Tracking-Licence-Recognition
 pip install -e '.[dev]'
 ```
 
-- Setting the Directory.
-```
-cd ultralytics/yolo/v8/detect
-```
-- Downloading the DeepSORT Files From The Google Drive 
-```
-https://drive.google.com/drive/folders/1kna8eWGrSfzaR6DtNJ8_GchGgPMv3VC8?usp=sharing
-```
-- After downloading the DeepSORT Zip file from the drive, unzip it go into the subfolders and place the deep_sort_pytorch folder into the yolo/v8/detect folder
-
 - For yolov8 object detection + Tracking + Vehicle Counting
 ```
-python predict.py model=yolov8l.pt source="test3.mp4" show=True
+python ultralytics/yolo/v8/detect/predict.py model=yolov8l.pt source="test3.mp4" show=True
 ```
 
 ### RESULTS
 
 #### Vehicles Detection, Tracking and Counting 
 ![](./figure/figure1.png)
-
 
 ### Watch the Complete Step by Step Explanation
 
