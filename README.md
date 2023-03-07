@@ -24,4 +24,4 @@ python predict.py model=yolov8m.pt source=demo
 ### Result
 
 #### Vehicles Detection, Tracking and Counting 
-![](./figure/figure1.png)
+![](./figure/result.mp4)
