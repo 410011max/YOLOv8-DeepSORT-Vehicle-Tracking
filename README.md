@@ -16,12 +16,13 @@ pip install -e '.[dev]'
 ```
 cd ultralytics/yolo/v8/detect
 ```
-- Run yolov8 object detection + Tracking + Vehicle Counting
+- Put your video or image into `ultralytics\yolo\v8\detect\demo`
+- Run YOLOv8 Vehicle Tracking & Counting
 ```
-python predict.py model=yolov8m.pt source=demo
+python predict.py model=yolov8x.pt imgsz=1280 conf=0.8 source=demo 
 ```
 
 ### Result
 
 #### Vehicles Detection, Tracking and Counting 
-![](./figure/result.mp4)
+![](./figure/figure1.png)

@@ -29,7 +29,6 @@ object_counter = {}
 
 object_counter1 = {}
 
-line = [(100, 500), (1050, 500)]
 def init_tracker():
     global deepsort
     cfg_deep = get_config()
@@ -153,10 +152,11 @@ def get_direction(point1, point2):
         direction_str += ""
 
     return direction_str
-def draw_boxes(img, bbox, names,object_id, identities=None, offset=(0, 0)):
+def draw_boxes(img, bbox, names, object_id, identities=None, offset=(0, 0)):
+    height, width, _ = img.shape
+    line = [(0, height//2), (img.shape[1], height//2)]
     cv2.line(img, line[0], line[1], (46,162,112), 3)
 
-    height, width, _ = img.shape
     # remove tracked point from buffer if object is lost
     for key in list(data_deque):
       if key not in identities:
@@ -180,7 +180,8 @@ def draw_boxes(img, bbox, names,object_id, identities=None, offset=(0, 0)):
           data_deque[id] = deque(maxlen= 64)
         color = compute_color_for_labels(object_id[i])
         obj_name = names[object_id[i]]
-        label = '{}{:d}'.format("", id) + ":"+ '%s' % (obj_name)
+        # label = '{}{:d}'.format("", id) + ":"+ '%s' % (obj_name)
+        label = obj_name
 
         # add center to buffer
         data_deque[id].appendleft(center)
@@ -287,11 +288,12 @@ class DetectionPredictor(BasePredictor):
         oids = []
         outputs = []
         for *xyxy, conf, cls in reversed(det):
-            x_c, y_c, bbox_w, bbox_h = xyxy_to_xywh(*xyxy)
-            xywh_obj = [x_c, y_c, bbox_w, bbox_h]
-            xywh_bboxs.append(xywh_obj)
-            confs.append([conf.item()])
-            oids.append(int(cls))
+            if(int(cls) == 2 or int(cls) == 7 or int(cls) == 8):
+                x_c, y_c, bbox_w, bbox_h = xyxy_to_xywh(*xyxy)
+                xywh_obj = [x_c, y_c, bbox_w, bbox_h]
+                xywh_bboxs.append(xywh_obj)
+                confs.append([conf.item()])
+                oids.append(int(cls))
         xywhs = torch.Tensor(xywh_bboxs)
         confss = torch.Tensor(confs)
           
@@ -301,7 +303,7 @@ class DetectionPredictor(BasePredictor):
             identities = outputs[:, -2]
             object_id = outputs[:, -1]
             
-            draw_boxes(im0, bbox_xyxy, self.model.names, object_id,identities)
+            draw_boxes(im0, bbox_xyxy, self.model.names, object_id, identities)
 
         return log_string
 
