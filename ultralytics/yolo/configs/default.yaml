@@ -2,7 +2,7 @@
 # Default training settings and hyperparameters for medium-augmentation COCO training
 
 task: "detect" # choices=['detect', 'segment', 'classify', 'init'] # init is a special case. Specify task to run.
-mode: "train" # choices=['train', 'val', 'predict'] # mode to run task in.
+mode: "predict" # choices=['train', 'val', 'predict'] # mode to run task in.
 
 # Train settings -------------------------------------------------------------------------------------------------------
 model: null # i.e. yolov8n.pt, yolov8n.yaml. Path to model file
